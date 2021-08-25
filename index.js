@@ -17,6 +17,28 @@ app.get("/", (req, res) => {
 app.get("/users", (req, res) => {
   res.json(data.users);
 });
+app.get("/users/:id", (req, res) => {
+  const found = req.params.id < data.users.length;
+
+  if (found) {
+    res.json(data.users[req.params.id]);
+  } else {
+    res.send("Users not found");
+  }
+
+})
+
+
+
+/* here i want to add schedules */
+app.get ("/schedules", (req, res) => {
+  res.json(data.schedules);
+})
+// else {
+//   res.send("Schedules not found");
+// })
+
+
 
 //Add a new user
 app.post("/user", (req, res) => {

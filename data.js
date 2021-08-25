@@ -47,18 +47,22 @@ module.exports.schedules = [
 ]
 module.exports.posts = [
     {
+        'id': 0,
         'user_id': 0,
         'post': "Here is my first post"
     },
     {
+        'id': 1,
         'user_id': 0,
         'post': "Today I bought a coffee, lockdown sucks."
     },
     {
+        'id': 2,
         'user_id': 0,
         'post': "This is probably my last post, this blog site is not very good."
     },
     {
+        'id': 3,
         'user_id': 2,
         'post': "Had leftover pizza for breakfast."
     }
