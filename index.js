@@ -23,12 +23,18 @@ app.get("/", (req, res) => {
 
 //Displays all users
 app.get("/users", (req, res) => {
-  res.json(data.users);
+  console.log(data.users)
+  res.render('pages/users', {
+    users:data.users
+  });
 });
 app.get("/users/:id", (req, res) => {
   const found = req.params.id < data.users.length;
 
-  if (found) {
+   if (found) {
+    res.render('pages/singleuser', {
+      singleuser:data.users[req.params.id]
+    })
     res.json(data.users[req.params.id]);
   } else {
     res.send("Users not found");
@@ -36,11 +42,20 @@ app.get("/users/:id", (req, res) => {
 
 })
 
-
+//Display schedules
+app.get("/schedules", (req, res) => {
+  console.log(data.schedules)
+  res.render('pages/schedules', {
+    schedules:data.schedules, users:data.users
+  });
+});
 
 //Displays schedules
 app.get ("/users/:id/schedules", (req, res) => {
   const schedules = data.schedules.filter(schedule => schedule.user_id === Number(req.params.id))
+    res.render('pages/userschedule', {
+      userschedule:data.schedules
+    })
     res.json(schedules);
 })
 

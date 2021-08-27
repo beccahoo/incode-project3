@@ -7,10 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-</main>
     <%- include('../partials/header')%>
+    <main>
     <!--HEADER GOES HERE-->
-    <h1 style = "color: purple "> Welcome to our schedule website </h1>
+    <h1 style = "color: purple "> ALL USERS </h1>
+    <% for (let i = 0; i < users.length; i++) {%>
+        <p>
+            <strong> <%= users[i].firstname %> <%= users[i].lastname %>  </strong> </br>
+            <%= users[i].email %></br>
+            <%= users[i].password %>
+
+        </p>
+        <% } %>
+    }
+
+    <!-- INSERT USERS-->
+
+
 </main>
     <!--FOOTER GOES HERE-->
 </body>

@@ -7,10 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-</main>
     <%- include('../partials/header')%>
-    <!--HEADER GOES HERE-->
-    <h1 style = "color: purple "> Welcome to our schedule website </h1>
+    <main>
+ 
+    <h1 style = "color: purple "> SINGLE USER </h1>
+ 
+    <p>
+        <strong> <%= singleuser.firstname %> <%= singleuser.lastname %>  </strong> </br>
+        <%= singleuser.email %></br>
+        <%= singleuser.password %>
+
+    </p>
+
+
 </main>
     <!--FOOTER GOES HERE-->
 </body>
