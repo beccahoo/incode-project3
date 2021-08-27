@@ -9,9 +9,16 @@ const { text } = require("express");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//Set view engine as EJS
+app.set('view engine', 'ejs')
+
+//Set public folder as statis folder
+app.use(express.static('public'))
+
+
 //GET request || Homepage
 app.get("/", (req, res) => {
-  res.send("Welcome to our schedule website");
+  res.render('pages/index');
 });
 
 //Displays all users
@@ -38,7 +45,7 @@ app.get ("/users/:id/schedules", (req, res) => {
 })
 
 //grabs the posts of a particular user
-//make empty array to store posts tat match
+//make empty array to store posts that match
 //   let schedules = []
 
 //   //loop through all posts
@@ -46,9 +53,8 @@ app.get ("/users/:id/schedules", (req, res) => {
 
 //   //if user id of post is same as id in path, add to schedules
 //   if (data.schedules[i].user_id === Number(req.param.id)) {
-//     schedules
+//     schedules.push(data.schedule[i])
 //   }
-
 //   res.json(schedules);
 // });
 // app.get("/users:id/schedules", (req,res) => {
