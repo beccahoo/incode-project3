@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS posts;
+
+CREATE DATABASE posts;
+
+ 

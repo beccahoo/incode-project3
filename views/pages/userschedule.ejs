@@ -11,17 +11,15 @@
     <main>
  
     <h1 style = "color: purple "> USER SCHEDULE </h1>
- 
-
+   
+    <% for (let i = 0; i < schedules.length; i++) { %>
         <p>
             <strong> <%= schedules[i].user_id %> </strong> </br>
             <%= schedules[i].day %> 
             <%= schedules[i].start_at %> 
             <%= schedules[i].end_at %>
-           
-
         </p>
-
+   <% } %>
 
 </main>
     <!--FOOTER GOES HERE-->

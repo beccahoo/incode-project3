@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.port || 3000;
 const data = require("./data");
 const { text } = require("express");
+const db = require('./database');
 
 //Body Parser
 app.use(express.json());
@@ -18,7 +19,9 @@ app.use(express.static('public'))
 
 //GET request || Homepage
 app.get("/", (req, res) => {
-  res.render('pages/index');
+  res.render('pages/index', {
+    name: "Bec"
+  });
 });
 
 //Displays all users
@@ -28,6 +31,21 @@ app.get("/users", (req, res) => {
     users:data.users
   });
 });
+
+app.get('/users/new', (req, res) => {
+  res.render('pages/newusers')
+})
+
+
+app.post('/users/new', (req, res) => {
+  //insert data into database
+  res.end()
+})
+
+
+
+
+
 app.get("/users/:id", (req, res) => {
   const found = req.params.id < data.users.length;
 
@@ -35,7 +53,7 @@ app.get("/users/:id", (req, res) => {
     res.render('pages/singleuser', {
       singleuser:data.users[req.params.id]
     })
-    res.json(data.users[req.params.id]);
+  //   res.json(data.users[req.params.id]);
   } else {
     res.send("Users not found");
   }
@@ -54,9 +72,9 @@ app.get("/schedules", (req, res) => {
 app.get ("/users/:id/schedules", (req, res) => {
   const schedules = data.schedules.filter(schedule => schedule.user_id === Number(req.params.id))
     res.render('pages/userschedule', {
-      userschedule:data.schedules
+      schedules: schedules
     })
-    res.json(schedules);
+//    res.json(schedules);
 })
 
 //grabs the posts of a particular user
@@ -116,3 +134,27 @@ app.listen(port, () => {
     `You're doing amazing! Example app listening at http://localhost:${port}`
   );
 });
+
+
+
+//creates two routes 
+// app.get("/users/new", (req, res) => {
+//   console.log(data.users)
+//   res.render('pages/users', {
+//     users:data.users
+//   });
+// });
+// app.get("/users/:id", (req, res) => {
+//   const found = req.params.id < data.users.length;
+
+//    if (found) {
+//     res.render('pages/singleuser', {
+//       singleuser:data.users[req.params.id]
+//     })
+//   //   res.json(data.users[req.params.id]);
+//   } else {
+//     res.send("Users not found");
+//   }
+
+// })
+
