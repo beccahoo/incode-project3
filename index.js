@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 //Set view engine as EJS
 app.set('view engine', 'ejs')
 
-//Set public folder as statis folder
+//Set public folder as static folder
 app.use(express.static('public'))
 
 
@@ -26,11 +26,32 @@ app.get("/", (req, res) => {
 
 //Displays all users
 app.get("/users", (req, res) => {
-  console.log(data.users)
-  res.render('pages/users', {
-    users:data.users
-  });
-});
+  db.any('SELECT * FROM users;')
+  .then(users => {
+    console.log(users)
+    res.render('pages/users', {
+      users
+  })
+})
+.catch(error => {
+  console.log(error)
+  res.send(error)
+})  
+})
+
+
+app.post('/users/new', (req, res) => {
+  console.log(req.body)
+  db.none('INSERT INTO users(name, post) VALUES($1, $2);', [req.body.name, req.body.post])
+  .then(() => {
+    res.redirect('/posts')
+  })
+  .catch(error => {
+    console.log(error)
+    res.send(error)
+  })
+})
+
 
 app.get('/users/new', (req, res) => {
   res.render('pages/newusers')
@@ -115,6 +136,20 @@ app.post("/user", (req, res) => {
   res.json(newUser);
   res.json(req.body);
 });
+
+app.get("/posts", (req, res) => {
+  db.any('SELECT * FROM users;')
+  .then(posts => {
+    console.log(posts)
+    res.render('pages/posts', {
+      users : posts
+  })
+})
+.catch(error => {
+  console.log(error)
+  res.send(error)
+})  
+})
 
 //Display a single post
 app.get("/posts/:id", (req, res) => {

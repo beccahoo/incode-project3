@@ -1,4 +1,4 @@
-INSERT INTO posts (name, post)
+INSERT INTO users (name, post)
 VALUES
   ('Mary Smith', 'Using this new post app, it''s not very fleshed out'),
   ('Bob', 'I had eggs for breakfast'),

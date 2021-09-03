@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS posts;
+DROP DATABASE IF EXISTS test_posts;
 
-CREATE DATABASE posts;
+CREATE DATABASE test_posts;
 
  

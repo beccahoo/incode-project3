@@ -1,10 +1,13 @@
-const pgp = require ('pg-promise') ()
+// Proper way to initialize and share the Database object
 
-const database = 'test_posts'
+// Loading and initializing the library:
+const pgp = require('pg-promise')();
 
-const connection = 'postgres://postgres:mao=)sun@localhost:5432/database' + database
+// Preparing the connection details:
+const cn = 'postgres://postgres:1234@localhost:5432/test_posts';
 
-const db = pgp(connection)
+// Creating a new database instance from the connection details:
+const db = pgp(cn);
 
-module.exports = db
-
+// Exporting the database object for shared use:
+module.exports = db;

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/header')%>
+    <main>
+    <!--HEADER GOES HERE-->
+    <h1 style = "color: purple "> ALL USERS </h1>
+    <% for (let i = 0; i < users.length; i++) {%>
+        <p>
+            <strong> <%= users[i].name %> </strong> </br>
+            <%= users[i].post %></br>
+
+
+        </p>
+        <% } %>
+    
+
+    <!-- INSERT USERS-->
+
+
+</main>
+    <!--FOOTER GOES HERE-->
+</body>
+</html>
