@@ -8,11 +8,12 @@ CREATE TABLE IF NOT EXISTS users (
   password VARCHAR(100) NOT NULL
 );
 
-DROP TABLE IF EXISTS schesdules, 
-  user_id INTEGER (3) NOT NULL,
-  day WEEKDAY(date) NOT NULL,
+DROP TABLE IF EXISTS schedules ( 
+  user_id INTEGER NOT NULL,
+  day INTEGER NOT NULL,
   start_at TIME(HH:MI) NOT NULL,
   end_at TIME(HH:MI) NOT NULL
+);
 
 -- CREATE TABLE IF NOT EXISTS test_posts(
 --     uniqueKeyId SERIAL PRIMARY KEY,

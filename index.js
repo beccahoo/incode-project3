@@ -57,6 +57,9 @@ app.get('/users/new', (req, res) => {
   res.render('pages/newusers')
 })
 
+app.get('/schedules/new', (req, res) => {
+  res.render('pages/newschedule')
+})
 
 app.post('/users/new', (req, res) => {
   //insert data into database
