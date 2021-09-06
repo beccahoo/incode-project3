@@ -5,6 +5,8 @@ const port = process.env.port || 3000;
 const data = require("./data");
 const { text } = require("express");
 const db = require('./database');
+const homeRouter = require('./routes/home');
+const newRouter = require('./routes/new');
 
 //Body Parser
 app.use(express.json());
@@ -15,14 +17,15 @@ app.set('view engine', 'ejs')
 
 //Set public folder as static folder
 app.use(express.static('public'))
-
+app.use('/', homeRouter)
+app.use('/new', newRouter)
 
 //GET request || Homepage
-app.get("/", (req, res) => {
-  res.render('pages/index', {
-    name: "Bec"
-  });
-});
+// app.get("/", (req, res) => {
+//   res.render('pages/index', {
+//     name: "Bec"
+//   });
+// });
 
 //Displays all users
 app.get("/users", (req, res) => {
@@ -40,17 +43,6 @@ app.get("/users", (req, res) => {
 })
 
 
-app.post('/users/new', (req, res) => {
-  console.log(req.body)
-  db.none('INSERT INTO users(name, post) VALUES($1, $2);', [req.body.name, req.body.post])
-  .then(() => {
-    res.redirect('/posts')
-  })
-  .catch(error => {
-    console.log(error)
-    res.send(error)
-  })
-})
 
 
 app.get('/users/new', (req, res) => {
@@ -84,13 +76,7 @@ app.get("/users/:id", (req, res) => {
 
 })
 
-//Display schedules
-app.get("/schedules", (req, res) => {
-  console.log(data.schedules)
-  res.render('pages/schedules', {
-    schedules:data.schedules, users:data.users
-  });
-});
+
 
 //Displays schedules
 app.get ("/users/:id/schedules", (req, res) => {

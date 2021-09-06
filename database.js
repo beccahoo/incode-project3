@@ -4,7 +4,7 @@
 const pgp = require('pg-promise')();
 
 // Preparing the connection details:
-const cn = 'postgres://postgres:1234@localhost:5432/test_posts';
+const cn = 'postgres://postgres:1234@localhost:5432/test_schedules';
 
 // Creating a new database instance from the connection details:
 const db = pgp(cn);
