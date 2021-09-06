@@ -1,10 +1,18 @@
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE IF NOT EXISTS users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  post VARCHAR(4000) NOT NULL
+  user_id SERIAL PRIMARY KEY,
+  firstname VARCHAR(255) NOT NULL,
+  lastname VARCHAR(255) NOT NULL,
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(100) NOT NULL
 );
+
+DROP TABLE IF EXISTS schesdules, 
+  user_id INTEGER (3) NOT NULL,
+  day WEEKDAY(date) NOT NULL,
+  start_at TIME(HH:MI) NOT NULL,
+  end_at TIME(HH:MI) NOT NULL
 
 -- CREATE TABLE IF NOT EXISTS test_posts(
 --     uniqueKeyId SERIAL PRIMARY KEY,
